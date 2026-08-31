@@ -1,0 +1,12 @@
+(function(root){
+const normalize=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+const filter=(products,query,category,type)=>products.filter(p=>(!category||category==='Todos'||p.category===category)&&(type==='all'||!type||p.type===type)&&normalize((p.code||'')+' '+p.name+' '+p.category+' '+p.includes.join(' ')).includes(normalize(query)));
+const total=items=>items.length&&items.every(p=>p.verified&&Number.isFinite(p.price)&&p.price>=0)?items.reduce((sum,p)=>sum+Math.round(p.price*100),0)/100:null;
+const age=value=>/^\d{1,3}$/.test(String(value))&&Number(value)>=0&&Number(value)<=120;
+const overlaps=items=>{const owners=new Map(),found=new Set();for(const item of items){for(const name of [item.name,...item.includes]){const key=normalize(name);if(owners.has(key)&&owners.get(key)!==item.id)found.add(name);owners.set(key,item.id)}}return [...found]};
+const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+const validDate=(value,min=today())=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;const d=new Date(value+'T12:00:00');return !Number.isNaN(d.getTime())&&d.getFullYear()===Number(value.slice(0,4))&&d.getMonth()+1===Number(value.slice(5,7))&&d.getDate()===Number(value.slice(8,10))&&value>=min};
+const steps=a=>['who','name','age',...(age(a.age)&&Number(a.age)<18?['tutor']:[]),'order','contact','date','review'];
+const validate=(key,value)=>{const text=String(value??'').trim();switch(key){case 'who':return ['self','other'].includes(text)?'':'Elige para quién son los estudios.';case 'name':case 'tutor':return text.length>=2&&text.length<=100&&!/[<>\r\n]/.test(text)?'':'Escribe un nombre de entre 2 y 100 caracteres.';case 'age':return age(text)?'':'Escribe una edad en años cumplidos, entre 0 y 120.';case 'order':return ['yes','no','unsure'].includes(text)?'':'Selecciona una respuesta para continuar.';case 'contact':return /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(text)&&text.length<=150?'':'Revisa el formato del correo, por ejemplo: prueba@example.com.';case 'date':return text===''||validDate(text)?'':'Elige una fecha válida a partir de hoy, o déjala pendiente.';default:return ''}};
+const api={normalize,filter,total,age,overlaps,today,validDate,steps,validate};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.ReprofemCommerce=api;
+})(typeof window!=='undefined'?window:this);
