@@ -30,3 +30,16 @@
 .chat-sources{display:grid;gap:4px;margin-top:7px}
 .chat-sources a{font-size:8px;color:var(--wine);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:740px){.chat-launcher{width:58px;height:58px;padding:7px}}
+
+/* Simulador de pago */
+.payment-card{min-height:155px;margin:24px 0 17px;padding:24px;border-radius:18px;background:linear-gradient(135deg,var(--dark),var(--wine));color:white;box-shadow:0 18px 38px #4e141e30;display:flex;flex-direction:column;justify-content:space-between}
+.payment-card span,.payment-card small,.order-ticket span,.order-ticket small{font-size:9px;letter-spacing:.12em}
+.payment-card strong{font-size:21px;letter-spacing:.08em;font-weight:500}.payment-card small{color:#f4ced2}
+.payment-total{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:12px}.payment-total strong{font-size:19px;color:var(--wine)}
+.payment-spinner{width:54px;height:54px;border:5px solid var(--sand);border-top-color:var(--wine);border-radius:50%;margin-bottom:25px;animation:payment-spin .9s linear infinite}
+.order-ticket{display:flex;flex-direction:column;gap:6px;margin:24px 0;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--sand)}.order-ticket strong{font-size:19px;color:var(--wine)}.order-ticket small{color:var(--muted)}
+.complete-mark.success{width:58px;height:58px;font-size:25px;background:var(--wine);color:white}@keyframes payment-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.payment-spinner{animation:none}}
+
+/* El chat conserva contexto visual de la página en pantallas pequeñas */
+@media(max-width:740px){.chat-panel{inset:auto 10px max(10px,env(safe-area-inset-bottom)) auto;width:calc(100vw - 20px);height:min(620px,calc(100svh - 78px));max-width:410px;border-radius:20px}.chat-panel>header{padding:13px 15px}.chat-messages{padding:16px 14px}}
