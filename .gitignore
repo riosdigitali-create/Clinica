@@ -30,3 +30,8 @@
 !/CLAUDE.md
 !/_headers
 !/scripts/build-static.cjs
+!/admin-login.html
+!/admin-login.css
+!/admin-login.js
+!/functions/
+!/functions/**
