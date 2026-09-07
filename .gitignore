@@ -10,18 +10,13 @@
 !/catalog.js
 !/chatbot.js
 !/study-knowledge.js
-!/worker.js
 !/vite.config.js
 !/package.json
 !/package-lock.json
 !/REDISENO.md
-!/.openai/
-/.openai/*
-!/.openai/hosting.json
 !/scripts/
 /scripts/*
 !/scripts/serve.cjs
-!/scripts/build-worker.cjs
 !/scripts/commerce.test.cjs
 !/assets/
 !/assets/**
@@ -31,3 +26,7 @@
 /data/*
 !/data/catalogo-proporcionado.tsv
 !/scripts/import-catalog.cjs
+!/AGENTS.md
+!/CLAUDE.md
+!/_headers
+!/scripts/build-static.cjs
