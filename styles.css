@@ -22,3 +22,11 @@
 @media(prefers-reduced-motion:reduce){.cart-dock,.chat-launcher{transition:none}.chat-panel:not([hidden]){animation:none}.chat-message.thinking>p:after{animation:none}}
 @media(max-width:370px){.package-grid{grid-template-columns:1fr}.package-image{height:270px}.hero h1{font-size:54px}.header .brand{width:115px}.announcement{font-size:8px}#guide-title{font-size:38px}}
 .detail-source{font-size:10px!important;color:var(--muted);margin:20px 0!important}.preparation-summary{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:22px 0;padding:16px 0}.preparation-summary summary{font-size:12px;color:var(--wine);cursor:pointer;display:flex;justify-content:space-between;gap:15px;list-style:none}.preparation-summary summary::-webkit-details-marker{display:none}.preparation-summary>p,.preparation-summary>div>p{font-size:11px;color:var(--muted);line-height:1.8;margin-top:10px}.preparation-summary>div{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}.preparation-summary strong{font-size:11px;font-weight:600}.preparation-summary[open] summary span{transform:rotate(45deg)}
+
+/* Acceso compacto al asistente y fuentes clínicas */
+.chat-launcher{width:62px;height:62px;display:grid;place-items:center;gap:0;border-radius:50%;padding:8px}
+.chat-launcher img{width:46px;height:46px}
+.chat-launcher .chat-pulse{display:block;position:absolute;right:2px;top:3px;width:12px;height:12px;border:3px solid var(--wine);border-radius:50%;background:var(--rose)}
+.chat-sources{display:grid;gap:4px;margin-top:7px}
+.chat-sources a{font-size:8px;color:var(--wine);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:740px){.chat-launcher{width:58px;height:58px;padding:7px}}
